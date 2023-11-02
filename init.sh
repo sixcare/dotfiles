@@ -11,7 +11,6 @@ doas usermod -s /usr/bin/zsh "$USER"
 
 sed -i 's/^plugins=(.*/plugins=(git ssh-agent)/g' ~/.zshrc
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="robbyrussell"/g' ~/.zshrc
-# shellcheck disable=SC2016
-printf 'export GPG_TTY=$(tty)\n' >> ~/.zshrc
+grep -q 'export GPG_TTY=.*' myfile && sed -i -e 's/^export GPG_TTY=.*/export GPG_TTY=$(tty)/g' myfile || printf 'export GPG_TTY=$(tty)\n' >> myfile
 
 curl -o- https://raw.githubusercontent.com/sixcare/dotfiles/main/install.sh | zsh
