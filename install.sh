@@ -8,7 +8,7 @@ log() {
 
 log "Packages"
 doas apt-get update
-doas apt-get install -y ca-certificates curl gnupg unzip build-essential htop bmon net-tools python3-venv
+doas apt-get install -y ca-certificates curl firefox-esr firefox-esr-l10n-en-gb firefox-esr-l10n-nb-no gnupg unzip build-essential htop bmon net-tools python3-venv
 
 mkdir -p ~/Downloads/
 
