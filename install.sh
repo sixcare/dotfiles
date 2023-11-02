@@ -34,7 +34,7 @@ rm -rf ~/Downloads/fonts ~/Downloads/SourceCodePro.zip
 
 # Sway
 log "Sway"
-doas apt-get install -y sway swaybg swayidle swaylock waybar
+doas apt-get install -y sway swaybg swayidle swaylock waybar bemenu
 mkdir -p ~/.config/{sway,foot}
 curl -fsSLo ~/.config/sway/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swayconfig
 curl -fsSLo ~/.config/foot/foot.ini https://raw.githubusercontent.com/sixcare/dotfiles/main/config/foot.ini
