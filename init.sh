@@ -2,7 +2,7 @@
 set -euo pipefail
 
 log() {
-    printf "ʕっ•ᴥ•ʔっ $(date -Ins) » %s\n" $1
+    printf "\(°^°)/ $(date -Ins) » %s\n" $1
 }
 
 # Zsh
