@@ -52,8 +52,8 @@ doas apt-get update
 doas apt-get install -y codium
 
 # Signal
-curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor -o /etc/apt/keyrings/signal-desktop-keyring.gpg
-chmod a+r /etc/apt/keyrings/signal-desktop-keyring.gpg
+curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | doas gpg --dearmor -o /etc/apt/keyrings/signal-desktop-keyring.gpg
+doas chmod a+r /etc/apt/keyrings/signal-desktop-keyring.gpg
 
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' \
   | doas tee /etc/apt/sources.list.d/signal-xenial.list
