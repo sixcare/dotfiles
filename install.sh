@@ -91,7 +91,7 @@ doas chmod +x /usr/local/bin/nvim
 
 # nvim
 log "nvim"
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+[[ -d ~/.config/nvim ]] || git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 
 # Spotify
 log "Spotify"
