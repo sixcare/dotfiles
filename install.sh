@@ -80,7 +80,7 @@ git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 curl -fsSL https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | doas gpg --yes --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | doas tee /etc/apt/sources.list.d/spotify.list
 doas apt-get update
-doas apt-get install spotify-client
+doas apt-get install -y spotify-client
 
 # NVM
 curl -fsSLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -89,4 +89,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm use node
 
 # ShellCheck
-doas apt install shellcheck
+doas apt install -y shellcheck
