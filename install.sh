@@ -47,7 +47,7 @@ doas chmod a+r /usr/share/keyrings/vscodium-archive-keyring.gpg
 echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
     | doas tee /etc/apt/sources.list.d/vscodium.list
 
-doas apt-get update 
+doas apt-get update
 doas apt-get install -y codium
 
 # Signal
@@ -57,11 +57,11 @@ doas chmod a+r /usr/share/keyrings/signal-desktop-keyring.gpg
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' \
   | doas tee /etc/apt/sources.list.d/signal-xenial.list
 
-doas apt update 
-doas apt install -y signal-desktop
+doas apt-get update
+doas apt-get install -y signal-desktop
 
 # VIM
-doas apt-get install vim
+doas apt-get install -y vim
 doas update-alternatives --set editor /usr/bin/vim.basic
 curl -fsSLo ~/.vimrc https://raw.githubusercontent.com/sixcare/dotfiles/main/config/vimrc
 
@@ -89,4 +89,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm use node
 
 # ShellCheck
-doas apt install -y shellcheck
+doas apt-get install -y shellcheck
