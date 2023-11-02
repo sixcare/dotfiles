@@ -39,7 +39,7 @@ mkdir -p ~/.config/{sway,foot}
 curl -fsSLo ~/.config/sway/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swayconfig
 curl -fsSLo ~/.config/foot/foot.ini https://raw.githubusercontent.com/sixcare/dotfiles/main/config/foot.ini
 mkdir -p ~/.config/waybar/scripts
-curl -fsSLo ~/.config/waybar/styles.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
+curl -fsSLo ~/.config/waybar/style.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
 curl -fsSLo ~/.config/waybar/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/config
 curl -fsSLo ~/.config/waybar/mullvad.zsh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/mullvad.zsh
 
