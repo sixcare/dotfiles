@@ -9,9 +9,9 @@ doas install -m 0755 -d /etc/apt/keyrings
 mkdir -p ~/Downloads/
 
 # Mullvad
-curl -fsSLo ~/Downloads/mullvad.deb https://mullvad.net/download/app/deb/latest
-doas apt-get install -y ~/Downloads/mullvad.deb
-rm -f ~/Downloads/mullvad.deb
+curl -fsSLo /tmp/mullvad.deb https://mullvad.net/download/app/deb/latest
+doas apt-get install -y /tmp/mullvad.deb
+rm -f /tmp/mullvad.deb
 
 # Git
 git config --global init.defaultBranch main
@@ -33,7 +33,7 @@ curl -fsSLo ~/.config/foot/foot.ini https://raw.githubusercontent.com/sixcare/do
 mkdir -p ~/.config/waybar/scripts
 curl -fsSLo ~/.config/waybar/styles.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
 curl -fsSLo ~/.config/waybar/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/config
-curl -fsSLo ~/.config/waybar/mullvad.zsh https://github.com/sixcare/dotfiles/blob/main/config/waybar/scripts/mullvad.zsh
+curl -fsSLo ~/.config/waybar/mullvad.zsh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/mullvad.zsh
 
 # Podman
 doas apt-get install -y podman
