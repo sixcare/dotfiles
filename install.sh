@@ -42,6 +42,7 @@ mkdir -p ~/.config/waybar/scripts
 curl -fsSLo ~/.config/waybar/style.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
 curl -fsSLo ~/.config/waybar/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/config
 curl -fsSLo ~/.config/waybar/mullvad.zsh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/mullvad.zsh
+chmod +x ~/.config/waybar/mullvad.zsh
 
 # Podman
 log "Podman"
