@@ -14,8 +14,13 @@ if [[ $(print $MULLVAD_STATUS | awk '{print $1}') == 'Connecting' ]]; then
   exit 0
 fi
 
-if [[ $MULLVAD_STATUS == *"Offline"* || $MULLVAD_STATUS == *offline* ]]; then
+if [[ $MULLVAD_STATUS == *"Offline"* || $MULLVAD_STATUS == *"offline"* ]]; then
   printf "%s\n" "{\"text\":\"Offline\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
+  exit 0
+fi
+
+if [[ $MULLVAD_STATUS == *"Disconnected"* || $MULLVAD_STATUS == *"disconnected"* ]]; then
+  printf "%s\n" "{\"text\":\"Disconnected\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
   exit 0
 fi
 
