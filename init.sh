@@ -6,7 +6,8 @@ doas apt-get update
 doas apt-get -y install git zsh
 
 # Oh My zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+[[ -d ~/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 doas /usr/sbin/usermod -s /usr/bin/zsh "$USER"
 
 sed -i 's/^plugins=(.*/plugins=(git ssh-agent)/g' ~/.zshrc
