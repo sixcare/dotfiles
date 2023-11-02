@@ -42,7 +42,7 @@ doas apt-get install -y podman
 doas apt-get install -y keepassxc
 
 # vscodium
-curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | doas gpg --dearmor -o /usr/share/keyrings/vscodium-archive-keyring.gpg
+curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | doas gpg --yes --dearmor -o /usr/share/keyrings/vscodium-archive-keyring.gpg
 doas chmod a+r /usr/share/keyrings/vscodium-archive-keyring.gpg
 
 echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
@@ -52,7 +52,7 @@ doas apt-get update
 doas apt-get install -y codium
 
 # Signal
-curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | doas gpg --dearmor -o /etc/apt/keyrings/signal-desktop-keyring.gpg
+curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | doas gpg --yes --dearmor -o /etc/apt/keyrings/signal-desktop-keyring.gpg
 doas chmod a+r /etc/apt/keyrings/signal-desktop-keyring.gpg
 
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' \
@@ -78,7 +78,7 @@ doas chmod +x /usr/local/bin/nvim
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 
 # Spotify
-curl -fsSL https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | doas gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+curl -fsSL https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | doas gpg --yes --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | doas tee /etc/apt/sources.list.d/spotify.list
 doas apt-get update
 doas apt-get install spotify-client
