@@ -4,7 +4,6 @@ set -euo pipefail
 
 doas apt-get update
 doas apt-get install -y ca-certificates curl gnupg unzip build-essential htop bmon net-tools python3-venv
-doas install -m 0755 -d /etc/apt/keyrings
 
 mkdir -p ~/Downloads/
 
@@ -52,8 +51,8 @@ doas apt-get update
 doas apt-get install -y codium
 
 # Signal
-curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | doas gpg --yes --dearmor -o /etc/apt/keyrings/signal-desktop-keyring.gpg
-doas chmod a+r /etc/apt/keyrings/signal-desktop-keyring.gpg
+curl -fsSL https://updates.signal.org/desktop/apt/keys.asc | doas gpg --yes --dearmor -o /usr/share/keyrings/signal-desktop-keyring.gpg
+doas chmod a+r /usr/share/keyrings/signal-desktop-keyring.gpg
 
 echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' \
   | doas tee /etc/apt/sources.list.d/signal-xenial.list
