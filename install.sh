@@ -3,7 +3,7 @@
 set -euo pipefail
 
 doas apt-get update
-doas apt-get install -y ca-certificates curl gnupg git build-essentials htop bmon net-tools python3-venv
+doas apt-get install -y ca-certificates curl gnupg build-essentials htop bmon net-tools python3-venv
 doas install -m 0755 -d /etc/apt/keyrings
 
 # Git

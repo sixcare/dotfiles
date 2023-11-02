@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Zsh
 doas apt-get update
-doas apt-get -y install zsh
+doas apt-get -y install git zsh
 
 # Oh My zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
