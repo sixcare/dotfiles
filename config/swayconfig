@@ -201,4 +201,12 @@ bar {
     swaybar_command waybar
 }
 
+# Style
+# Property Name             Border  BG      Text    Indicator Child-border
+client.focused              #0a0b16 #292b2e #FFD54F #4C1B1B   #4C1B1B
+client.focused_inactive     #292b2e #292b2e #d8dee8 #292b2e   #292b2e
+client.unfocused            #292b2e #292b2e #d8dee8 #292b2e   #292b2e
+client.urgent               #292b2e #292b2e #d8dee8 #292b2e   #292b2e
+client.placeholder          #292b2e #292b2e #d8dee8 #292b2e   #292b2e
+
 include /etc/sway/config.d/*
