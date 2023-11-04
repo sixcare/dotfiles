@@ -21,6 +21,7 @@ packages=(
     net-tools
     unzip
     pavucontrol
+    pulseaudio
     python3-venv
 )
 doas apt-get update
