@@ -6,6 +6,7 @@
 
 ### Variables
 #
+set $font 'SauceCodePro Nerd Font Mono'
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -19,16 +20,18 @@ exec foot -s
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run | xargs swaymsg exec --
+set $menu bemenu-run -i -l 25 -p '' -W 0.45 -H 30 --fn $font --nb '#00000099' --ab '#00000099' --hb '#000000cc'| xargs swaymsg exec --
+set $lock swaylock -fki /usr/share/backgrounds/lockscreen-1920x1080.png
 
-font pango:SauceCodePro Nerd Font Mono 12
+# font pango:SauceCodePro Nerd Font Mono 12
+font $font 12
 
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/custom_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -38,32 +41,15 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Idle configuration
 #
-# Example configuration:
-#
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
+    timeout 300 $lock \
     timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 000000'
-
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+    before-sleep $lock
 
 ### Input configuration
-#
-# Example configuration:
-#
    input * {
        xkb_layout 'no'
    }
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -80,7 +66,7 @@ exec swayidle -w \
     # Start your launcher
     bindsym $mod+d exec $menu
 
-    # bindsym $mod+l exec swaylock
+    bindsym $mod+l exec $lock
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -98,10 +84,10 @@ exec swayidle -w \
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    # bindsym $mod+$left focus left
+    # bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up
+    # bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -212,20 +198,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-
     swaybar_command waybar
-
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
 }
 
 include /etc/sway/config.d/*
