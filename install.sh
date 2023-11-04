@@ -78,6 +78,8 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 
 doas apt-get update
 doas apt-get install -y codium
+mkdir -p ~/.config/VSCodium/User
+curl -fsSLo ~/.config/VSCodium/User/settings.json https://raw.githubusercontent.com/sixcare/dotfiles/main/config/vscode.json
 
 # Signal
 log "Signal"
