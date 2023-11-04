@@ -21,6 +21,9 @@
 	],
 	"modules-right": [
 		"custom/left-arrow-dark",
+		"backlight",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"pulseaudio",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
@@ -76,7 +79,13 @@
 		"format": "{:%d-%m}",
 		"tooltip": false
 	},
-
+	"backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl -q s 2%+",
+    "on-scroll-down": "brightnessctl -q s 2%-"
+  },
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",

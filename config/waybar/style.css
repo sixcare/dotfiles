@@ -23,6 +23,7 @@ window#waybar {
 #clock.2,
 #clock.3,
 #pulseaudio,
+#backlight,
 #custom-vpn,
 #memory,
 #cpu,
@@ -34,10 +35,11 @@ window#waybar {
 
 #workspaces button {
 	padding: 0 2px;
-	color: #fdf6e3;
+	color: #29B6F6;
 }
 #workspaces button.focused {
-	color: #268bd2;
+	background: #222222;
+	color: #FFD54F;
 }
 #workspaces button:hover {
 	box-shadow: inherit;
@@ -49,27 +51,38 @@ window#waybar {
 	padding: 0 3px;
 }
 
+#clock {
+	color: #FFD54F;
+}
+#clock.2 {
+	color: #29B6F6;
+}
+
+#backlight{
+	color: #E6EE9C;
+}
 #pulseaudio {
-	color: #268bd2;
+	color: #FFD54F;
 }
 #custom-vpn {
-	color: #268bd2;
+	color: #FF8F00;
 }
 #memory {
-	color: #2aa198;
+	color: #FF5252;
 }
 #cpu {
-	color: #6c71c4;
+	color: #7E57C2;
 }
 #battery {
-	color: #859900;
+	color: #7A5DC7;
 }
 #network{
-	color: #b58900;
+	color: #29B6F6;
 }
 
 #clock,
 #pulseaudio,
+#backlight,
 #custom-vpn,
 #memory,
 #cpu,
