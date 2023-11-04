@@ -6,6 +6,8 @@ log() {
     printf "\(°^°)/ $(date -Ins) » %s\n" $1
 }
 
+log "Executing install.sh"
+
 log "Packages"
 packages=(
     bmon
