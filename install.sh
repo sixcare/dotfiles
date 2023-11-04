@@ -17,6 +17,7 @@ packages=(
     firefox-esr-l10n-nb-no
     gnupg
     htop
+    jq
     net-tools
     unzip
     pavucontrol
