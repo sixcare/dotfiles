@@ -137,3 +137,9 @@ nvm use node
 # ShellCheck
 log "ShellCheck"
 doas apt-get install -y shellcheck
+
+# network
+log "network"
+doas apt-get install -y network-manager
+doas systemctl start NetworkManager.service
+doas systemctl enable NetworkManager.service
