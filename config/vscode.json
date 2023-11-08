@@ -1,3 +1,5 @@
-{                                                                                                                                                       
-  "window.titleBarStyle": "custom"                                                                                                                      
+{
+  "window.titleBarStyle": "custom",
+  "editor.fontFamily": "'SauceCodePro Nerd Font', 'monospace', monospace",
+  "editor.fontSize": 16
 }
