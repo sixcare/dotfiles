@@ -136,6 +136,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm install node
 nvm use node
 
+# Rust
+log "Rust"
+sh -c "$(curl -fsSL https://sh.rustup.rs)" "" -y
+
 # ShellCheck
 log "ShellCheck"
 doas apt-get install -y shellcheck
