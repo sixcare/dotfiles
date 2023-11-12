@@ -75,6 +75,9 @@ chmod +x ~/.config/waybar/scripts/mullvad.zsh
 mkdir -p ~/.config/swaylock/
 doas curl -fsSLo /usr/share/backgrounds/lockscreen-1920x1080.png https://wallpaper.sixca.re/lockscreen_1920x1080.png
 curl -fsSLo ~/.config/swaylock/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swaylock/config
+grep -q '^alias gotosleep=.*' ~/.zshrc && \
+    sed -i -e 's/^alias gotosleep=.*/alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"/g' ~/.zshrc || \
+    printf 'alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"' >> ~/.zshrc
 
 # Podman
 log "Podman"
