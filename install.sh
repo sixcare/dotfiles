@@ -119,14 +119,21 @@ log "TMUX"
 doas apt-get install -y tmux
 curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/sixcare/dotfiles/main/config/tmux.conf
 
+# Rust
+log "Rust"
+sh -c "$(curl -fsSL https://sh.rustup.rs)" "" -y
+/home/sixcare/.cargo/bin/rustup component add rust-analyzer
+
 # Neovim
 log "Neovim"
 doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 doas chmod +x /usr/local/bin/nvim
 
-# nvim
-log "nvim"
+# AstroNvim
+log "AstroNvim"
 [[ -d ~/.config/nvim ]] || git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+curl -fsSLo $HOME/.config/nvim/init.lua https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/init.lua
+curl -fsSLo $HOME/.config/nvim/lua/plugins/surround.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/surround.lua
 
 # Spotify
 log "Spotify"
@@ -142,10 +149,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install node
 nvm use node
-
-# Rust
-log "Rust"
-sh -c "$(curl -fsSL https://sh.rustup.rs)" "" -y
 
 # ShellCheck
 log "ShellCheck"
