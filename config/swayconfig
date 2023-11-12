@@ -21,7 +21,7 @@ exec foot -s
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu bemenu-run -i -l 25 -p '' -W 0.45 -H 30 --fn $font --nb '#00000099' --ab '#00000099' --hb '#000000cc'| xargs swaymsg exec --
-set $lock swaylock -fki /usr/share/backgrounds/lockscreen-1920x1080.png
+set $lock swaylock -C $HOME/.config/swaylock/config
 
 # font pango:SauceCodePro Nerd Font Mono 12
 font $font 12
@@ -31,7 +31,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/custom_1920x1080.png fill
+output * bg /usr/share/backgrounds/background-1920x1080.png fill
 #
 # Example configuration:
 #
@@ -41,10 +41,10 @@ output * bg /usr/share/backgrounds/custom_1920x1080.png fill
 
 ### Idle configuration
 #
+# lock screen before suspend. Use loginctl lock-session to lock your screen.
 exec swayidle -w \
-    timeout 300 $lock \
-    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
+  timeout 300 'swaylock -C$HOME/.config/swaylock/config' timeout 420 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock'
+exec swayidle lock 'swaymsg "output * dpms on" && swaylock' unlock 'kill -s 1 $(pgrep swaylock)'
 
 ### Input configuration
    input * {
