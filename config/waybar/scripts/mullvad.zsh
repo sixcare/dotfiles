@@ -12,14 +12,10 @@ MULLVAD_STATUS=$(mullvad status)
 if [[ $(print $MULLVAD_STATUS | awk '{print $1}') == 'Connecting' ]]; then
   printf "%s\n" "{\"text\":\"󰛴 \",\"tooltip\":\"${MULLVAD_STATUS}\"}"
   exit 0
-fi
-
-if [[ $MULLVAD_STATUS == *"Offline"* || $MULLVAD_STATUS == *"offline"* ]]; then
+elif [[ $MULLVAD_STATUS == *"Offline"* || $MULLVAD_STATUS == *"offline"* ]]; then
   printf "%s\n" "{\"text\":\"󰲛 X\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
   exit 0
-fi
-
-if [[ $MULLVAD_STATUS == *"Disconnected"* || $MULLVAD_STATUS == *"disconnected"* ]]; then
+elif [[ $MULLVAD_STATUS == *"Disconnected"* || $MULLVAD_STATUS == *"disconnected"* ]]; then
   printf "%s\n" "{\"text\":\"󰲛 X\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
   exit 0
 fi
@@ -27,8 +23,8 @@ fi
 MULLVAD_SRV=$(print $MULLVAD_STATUS | cut -d' ' -f3)
 MULLVAD_IP=$(mullvad relay list | grep -i $MULLVAD_SRV | xargs | awk '{print $2}' | cut -d'(' -f2)
 
-if [[ -z $MULLVAD_SRV ]]; then
-  printf "%s\n" "{\"text\":\"󰅛 X\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
-else
+if [[ -n $MULLVAD_SRV ]]; then
   printf "%s\n" "{\"text\":\"󰒄 \",\"tooltip\":\"${MULLVAD_STATUS} (${MULLVAD_IP::-1})\"}"
+else
+  printf "%s\n" "{\"text\":\"󰅛 X\",\"tooltip\":\"${MULLVAD_STATUS}\"}"
 fi
