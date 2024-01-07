@@ -150,6 +150,7 @@ log "AstroNvim"
 [[ -d ~/.config/nvim ]] || git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 curl -fsSLo "$HOME"/.config/nvim/init.lua https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/init.lua
 curl -fsSLo "$HOME"/.config/nvim/lua/plugins/surround.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/surround.lua
+curl -fsSLo "$HOME"/.config/nvim/lua/plugins/neo-tree.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/neo-tree.lua
 
 # Spotify
 log "Spotify"
