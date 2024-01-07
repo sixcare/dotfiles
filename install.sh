@@ -85,6 +85,17 @@ grep -q '^alias gotosleep=.*' ~/.zshrc && \
 log "Podman"
 doas apt-get install -y podman
 
+# Docker
+curl -fsSL https://download.docker.com/linux/debian/gpg | doas gpg --dearmor -o /usr/share/keyrings/docker.gpg
+doas chmod a+r /usr/share/keyrings/docker.gpg
+# shellcheck source=/dev/null
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  doas tee /etc/apt/sources.list.d/docker.list > /dev/null
+doas apt-get update
+doas apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 # Keepass
 log "Keepassxc"
 doas apt-get install -y keepassxc
