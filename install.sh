@@ -3,7 +3,7 @@
 set -euo pipefail
 
 log() {
-    printf "\(°^°)/ $(date -Ins) » %s\n" $1
+    printf "\(°^°)/ $(date -Ins) » %s\n" "$1"
 }
 
 log "Executing install.sh"
@@ -27,7 +27,7 @@ packages=(
     python3-venv
 )
 doas apt-get update
-doas apt-get install -y $packages[@]
+doas apt-get install -y "${packages[@]}"
 
 mkdir -p ~/Downloads/
 
@@ -75,6 +75,8 @@ chmod +x ~/.config/waybar/scripts/mullvad.zsh
 mkdir -p ~/.config/swaylock/
 doas curl -fsSLo /usr/share/backgrounds/lockscreen-1920x1080.png https://wallpaper.sixca.re/lockscreen_1920x1080.png
 curl -fsSLo ~/.config/swaylock/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swaylock/config
+
+# shellcheck disable=SC2016
 grep -q '^alias gotosleep=.*' ~/.zshrc && \
     sed -i -e 's/^alias gotosleep=.*/alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"/g' ~/.zshrc || \
     printf 'alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"' >> ~/.zshrc
@@ -135,8 +137,8 @@ doas chmod +x /usr/local/bin/nvim
 # AstroNvim
 log "AstroNvim"
 [[ -d ~/.config/nvim ]] || git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-curl -fsSLo $HOME/.config/nvim/init.lua https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/init.lua
-curl -fsSLo $HOME/.config/nvim/lua/plugins/surround.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/surround.lua
+curl -fsSLo "$HOME"/.config/nvim/init.lua https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/init.lua
+curl -fsSLo "$HOME"/.config/nvim/lua/plugins/surround.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/surround.lua
 
 # Spotify
 log "Spotify"
@@ -148,7 +150,9 @@ doas apt-get install -y spotify-client
 # NVM
 log "NVM"
 curl -fsSLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export NVM_DIR
+# shellcheck source=/dev/null
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install node
 nvm use node

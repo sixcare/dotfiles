@@ -2,7 +2,7 @@
 set -euo pipefail
 
 log() {
-    printf "\(°^°)/ $(date -Ins) » %s\n" $1
+    printf "\(°^°)/ $(date -Ins) » %s\n" "$1"
 }
 
 # Zsh
@@ -17,6 +17,7 @@ doas /usr/sbin/usermod -s /usr/bin/zsh "$USER"
 
 sed -i 's/^plugins=(.*/plugins=(git ssh-agent)/g' ~/.zshrc
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="robbyrussell"/g' ~/.zshrc
+# shellcheck disable=SC2016
 grep -q 'export GPG_TTY=.*' ~/.zshrc && sed -i -e 's/^export GPG_TTY=.*/export GPG_TTY=$(tty)/g' ~/.zshrc || printf 'export GPG_TTY=$(tty)\n' >> ~/.zshrc
 
 log "Downloading install.sh"
