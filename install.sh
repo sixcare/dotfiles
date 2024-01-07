@@ -95,6 +95,7 @@ echo \
   doas tee /etc/apt/sources.list.d/docker.list > /dev/null
 doas apt-get update
 doas apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+doas /usr/sbin/usermod -aG docker "$USER"
 
 # Keepass
 log "Keepassxc"
