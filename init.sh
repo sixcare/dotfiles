@@ -8,7 +8,7 @@ log() {
 # Zsh
 log "ZSH"
 doas apt-get update
-doas apt-get -y install git zsh
+doas apt-get -y install git zsh curl
 
 # Oh My zsh
 log "Oh My zsh"

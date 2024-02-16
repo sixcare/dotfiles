@@ -13,7 +13,6 @@ packages=(
     bmon
     build-essential
     ca-certificates
-    curl
     firefox-esr
     firefox-esr-l10n-en-gb
     firefox-esr-l10n-nb-no
