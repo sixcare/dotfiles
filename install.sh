@@ -26,6 +26,8 @@ packages=(
     pulseaudio
     python3-venv
     resolvconf
+    wireguard
+    wireguard-tools
 )
 doas apt-get update
 doas apt-get install -y "${packages[@]}"
