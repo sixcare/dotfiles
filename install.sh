@@ -25,6 +25,7 @@ packages=(
     pavucontrol
     pulseaudio
     python3-venv
+    resolvconf
 )
 doas apt-get update
 doas apt-get install -y "${packages[@]}"
