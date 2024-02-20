@@ -38,12 +38,6 @@ doas apt-get install brightnessctl
 doas sed -i '/^permit.*brightnessctl/d' /etc/doas.conf
 printf "permit nopass :wheel as root cmd /usr/bin/brightnessctl\n" >> /etc/doas.conf
 
-# Mullvad
-log "Mullvad"
-curl -fsSLo /tmp/mullvad.deb https://mullvad.net/download/app/deb/latest
-doas apt-get install -y /tmp/mullvad.deb
-rm -f /tmp/mullvad.deb
-
 # Git
 log "Git config"
 git config --global init.defaultBranch main
