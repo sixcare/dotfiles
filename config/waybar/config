@@ -103,7 +103,7 @@
 	},
   "custom/vpn": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/mullvad.zsh",
+    "exec": "~/.config/waybar/scripts/wireguard.sh",
     "return-type": "json",
     "interval": 30
   },

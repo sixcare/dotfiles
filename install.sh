@@ -34,6 +34,10 @@ doas apt-get install -y "${packages[@]}"
 
 mkdir -p ~/Downloads/
 
+# WireGuard
+doas sed -i '/^permit .* sixcare .* wg$/d' /etc/doas.conf
+printf "permit nopass sixcare as root cmd wg" >> /etc/doas.conf
+
 # brightnessctl
 log "brightnessctl"
 doas apt-get install brightnessctl
@@ -66,8 +70,11 @@ curl -fsSLo ~/.config/foot/foot.ini https://raw.githubusercontent.com/sixcare/do
 mkdir -p ~/.config/waybar/scripts
 curl -fsSLo ~/.config/waybar/style.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
 curl -fsSLo ~/.config/waybar/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/config
-curl -fsSLo ~/.config/waybar/scripts/mullvad.zsh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/mullvad.zsh
-chmod +x ~/.config/waybar/scripts/mullvad.zsh
+
+# WireGuard Script
+curl -fsSLo ~/.config/waybar/scripts/wireguard.sh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/wireguard.sh
+chmod +x ~/.config/waybar/scripts/wireguard.sh
+
 ## swaylock
 mkdir -p ~/.config/swaylock/
 doas curl -fsSLo /usr/share/backgrounds/lockscreen-1920x1080.png https://wallpaper.sixca.re/lockscreen_1920x1080.png
