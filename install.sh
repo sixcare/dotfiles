@@ -17,6 +17,7 @@ packages=(
     firefox-esr
     firefox-esr-l10n-en-gb
     firefox-esr-l10n-nb-no
+    fwupd
     gnupg
     htop
     jq
