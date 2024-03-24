@@ -12,8 +12,8 @@ WG_SERVERS=(
 )
 INTERFACE=NULL
 
-for i in ${!WG_SERVERS[@]}; do
-  if ip link show dev ${WG_SERVERS[$i]} &>/dev/null; then
+for i in "${!WG_SERVERS[@]}"; do
+  if ip link show dev "${WG_SERVERS[$i]}" &>/dev/null; then
     INTERFACE=${WG_SERVERS[$i]}
     break
   fi
@@ -31,9 +31,6 @@ if [[ ${ENDPOINT_EXEC_STATUS} != 0 ]]; then
   exit 1
 fi
 ENDPOINT=${ENDPOINT##*: }
-
-ENDPOINT_IP=${ENDPOINT%%:*} 
-ENDPOINT_PORT=${ENDPOINT##*:}
 
 printf "%s\n" "{\"text\":\"󰒄 \",\"tooltip\":\"WireGuard connected to ${INTERFACE} (${ENDPOINT})\"}"
 exit 0
