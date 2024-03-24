@@ -62,11 +62,11 @@ rm -rf ~/Downloads/fonts ~/Downloads/SourceCodePro.zip
 # Sway
 log "Sway"
 doas apt-get install -y sway swaybg swayidle swaylock waybar bemenu
-mkdir -p ~/.config/{sway,foot}
+mkdir -p ~/.config/sway
 mkdir -p /usr/share/backgrounds
 doas curl -fsSLo /usr/share/backgrounds/background-1920x1080.png https://wallpaper.sixca.re/wallpaper_1920x1080.png
 curl -fsSLo ~/.config/sway/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swayconfig
-curl -fsSLo ~/.config/foot/foot.ini https://raw.githubusercontent.com/sixcare/dotfiles/main/config/foot.ini
+
 ## waybar
 mkdir -p ~/.config/waybar/scripts
 curl -fsSLo ~/.config/waybar/style.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
