@@ -184,3 +184,22 @@ log "network"
 doas apt-get install -y network-manager
 doas systemctl start NetworkManager.service
 doas systemctl enable NetworkManager.service
+
+# Kitty
+log "Kitty"
+[[ -d /opt/kitty.app ]] || curl -L https://sw.kovidgoyal.net/kitty/installer.sh | doas sh /dev/stdin dest=/opt launch=n
+doas ln -fs /opt/kitty.app/bin/kitten /usr/local/bin/kitten
+doas ln -fs /opt/kitty.app/bin/kitty /usr/local/bin/kitty
+
+cp /opt/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+cp /opt/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+
+sed -i "s|Icon=kitty|Icon=/opt/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+sed -i "s|Exec=kitty|Exec=/opt/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+
+doas update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/kitty 10
+doas update-alternatives --set x-terminal-emulator /usr/local/bin/kitty
+
+sed -i 's/^# font_family.*/font_family SauceCodePro Nerd Font Mono/g' ~/.config/kitty/kitty.conf
+sed -i 's/^# background_opacity.*/background_opacity 0.75/g' ~/.config/kitty/kitty.conf
+
