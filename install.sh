@@ -186,7 +186,7 @@ doas systemctl enable NetworkManager.service
 
 # Kitty
 log "Kitty"
-[[ -d /opt/kitty.app ]] || curl -L https://sw.kovidgoyal.net/kitty/installer.sh | doas sh /dev/stdin dest=/opt launch=n
+[[ -d /opt/kitty.app ]] || curl -fsSLo- https://sw.kovidgoyal.net/kitty/installer.sh | doas sh /dev/stdin dest=/opt launch=n
 doas ln -fs /opt/kitty.app/bin/kitten /usr/local/bin/kitten
 doas ln -fs /opt/kitty.app/bin/kitty /usr/local/bin/kitty
 
