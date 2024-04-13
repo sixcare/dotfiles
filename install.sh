@@ -199,6 +199,9 @@ sed -i "s|Exec=kitty|Exec=/opt/kitty.app/bin/kitty|g" ~/.local/share/application
 doas update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/kitty 10
 doas update-alternatives --set x-terminal-emulator /usr/local/bin/kitty
 
+
+mkdir -p ~/.config/kitty
+find /opt/kitty.app/share/doc/kitty/html/_downloads -name "kitty.conf" -exec cp {} ~/.config/kitty/kitty.conf \;
 sed -i 's/^# font_family.*/font_family SauceCodePro Nerd Font Mono/g' ~/.config/kitty/kitty.conf
 sed -i 's/^# background_opacity.*/background_opacity 0.75/g' ~/.config/kitty/kitty.conf
 
