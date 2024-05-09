@@ -21,14 +21,14 @@ done
 
 if [[ ${INTERFACE} == NULL ]]; then
   printf "%s\n" "{\"text\":\"󰅛 X\",\"tooltip\":\"No WireGuard interface detected\"}"
-  exit 1
+  exit 0
 fi
 
 ENDPOINT=$(doas wg show | grep 'endpoint:')
 ENDPOINT_EXEC_STATUS=$?
 if [[ ${ENDPOINT_EXEC_STATUS} != 0 ]]; then
   printf "%s\n" "{\"text\":\"󰅛 X\",\"tooltip\":\"Failed to get WireGuard status\"}"
-  exit 1
+  exit 0
 fi
 ENDPOINT=${ENDPOINT##*: }
 
