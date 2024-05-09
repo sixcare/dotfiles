@@ -1,9 +1,8 @@
-// -*- mode: json -*-
+// -*- mode: jsonc -*-
 
 {
 	"layer": "top",
 	"position": "bottom",
-
 	"modules-left": [
 		"sway/workspaces",
 		"custom/right-arrow-dark"
@@ -44,7 +43,6 @@
 		"custom/left-arrow-dark",
 		"tray"
 	],
-
 	"custom/left-arrow-dark": {
 		"format": "",
 		"tooltip": false
@@ -61,12 +59,12 @@
 		"format": "",
 		"tooltip": false
 	},
-
+	
 	"sway/workspaces": {
 		"disable-scroll": true,
 		"format": "{name}"
 	},
-
+	
 	"clock#1": {
 		"format": "{:%a}",
 		"tooltip": false
@@ -80,12 +78,12 @@
 		"tooltip": false
 	},
 	"backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "brightnessctl -q s 2%+",
-    "on-scroll-down": "brightnessctl -q s 2%-"
-  },
+		"device": "intel_backlight",
+		"format": "{icon} {percent}%",
+		"format-icons": ["󰃞", "󰃟", "󰃠"],
+		"on-scroll-up": "brightnessctl -q s 2%+",
+		"on-scroll-down": "brightnessctl -q s 2%-"
+	},
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
@@ -101,12 +99,12 @@
 		"on-click": "pamixer -t",
 		"on-click-right": "pavucontrol"
 	},
-  "custom/vpn": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/wireguard.sh",
-    "return-type": "json",
-    "interval": 30
-  },
+	"custom/vpn": {
+		"format": "{}",
+		"exec": "$HOME/.config/waybar/scripts/wireguard.sh",
+		"return-type": "json",
+		"interval": 30
+	},
 	"memory": {
 		"interval": 5,
 		"format": "Mem {}%"
@@ -130,15 +128,23 @@
 			""
 		]
 	},
+	"bluetooth": {
+		"format": " {status}",
+		"format-disabled": "",
+		"format-connected": " {num_connections} connected",
+		"tooltip-format": "{controller_alias}\t{controller_address}",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+	},
 	"network": {
-    "format": "{ifname}: {ipaddr}/{cidr}",
-	  "format-wifi": " ({signalStrength}%)",
-    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		"format": "{ifname}: {ipaddr}/{cidr}",
+		"format-wifi": " ({signalStrength}%)",
+		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
 		"format-disconnected": "No network",
-    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": "{ifname} {essid} ({signalStrength}%) {ipaddr}/{cidr} via {gwaddr} ",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected"
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-wifi": "{ifname} {essid} ({signalStrength}%) {ipaddr}/{cidr} via {gwaddr} ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected"
 	},
 	"tray": {
 		"icon-size": 20
