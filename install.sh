@@ -144,6 +144,12 @@ curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/sixcare/dotfiles/main
 log "Rust"
 sh -c "$(curl -fsSL https://sh.rustup.rs)" "" -y
 
+# shellcheck disable=SC2016
+grep -q '^alias rust_init=.*' ~/.zshrc && \
+    sed -i -e 's/^alias rust_init=.*/alias rust_init="source <(rustup completions zsh)"\n/g' "$HOME/.zshrc" || \
+    printf 'alias rust_init="source <(rustup completions zsh)"\n' >> "$HOME/.zshrc"
+
+
 # Neovim
 log "Neovim"
 doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
