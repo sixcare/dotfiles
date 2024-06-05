@@ -143,7 +143,6 @@ curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/sixcare/dotfiles/main
 # Rust
 log "Rust"
 sh -c "$(curl -fsSL https://sh.rustup.rs)" "" -y
-/home/sixcare/.cargo/bin/rustup component add rust-analyzer
 
 # Neovim
 log "Neovim"
