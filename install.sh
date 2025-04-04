@@ -147,7 +147,7 @@ grep -q '^alias rust_init=.*' ~/.zshrc && \
 
 # Neovim
 log "Neovim"
-doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 doas chmod +x /usr/local/bin/nvim
 
 # Spotify
