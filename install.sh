@@ -209,16 +209,4 @@ doas update-alternatives --set x-terminal-emulator /usr/local/bin/kitty
 mkdir -p ~/.config/kitty
 find /opt/kitty.app/share/doc/kitty/html/_downloads -name "kitty.conf" -exec cp {} ~/.config/kitty/kitty.conf \;
 sed -i 's/^# font_family.*/font_family SauceCodePro Nerd Font Mono/g' ~/.config/kitty/kitty.conf
-sed -i 's/^# background_opacity.*/background_opacity 0.75/g' ~/.config/kitty/kitty.conf
-
-## Scripts
-mkdir -p "$HOME/scripts"
-
-curl -fsSLo "$HOME/scripts/mount_backup_nextcloud.sh" https://raw.githubusercontent.com/sixcare/dotfiles/main/scripts/nc_mnt.sh
-chmod +x "$HOME/scripts/mount_backup_nextcloud.sh"
-
-# shellcheck disable=SC2016
-grep -q '^alias ncmnt=.*' ~/.zshrc && \
-    sed -i -e 's/^alias ncmnt=.*/alias ncmnt="$HOME\/scripts\/mount_backup_nextcloud.sh"\n/g' "$HOME/.zshrc" || \
-    printf 'alias ncmnt="$HOME/scripts/mount_backup_nextcloud.sh"\n' >> "$HOME/.zshrc"
-
+sed -i 's/^# background_opacity.*/background_opacity 0.85/g' ~/.config/kitty/kitty.conf
