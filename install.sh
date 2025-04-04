@@ -86,9 +86,6 @@ grep -q '^alias gotosleep=.*' ~/.zshrc && \
     sed -i -e 's/^alias gotosleep=.*/alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"/g' ~/.zshrc || \
     printf 'alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemclt suspend"' >> ~/.zshrc
 
-# Podman
-log "Podman"
-doas apt-get install -y podman
 
 # Docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | doas gpg --dearmor -o /usr/share/keyrings/docker.gpg
