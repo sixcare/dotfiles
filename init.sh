@@ -20,5 +20,5 @@ sed -i 's/^ZSH_THEME=.*/ZSH_THEME="robbyrussell"/g' ~/.zshrc
 # shellcheck disable=SC2016
 grep -q 'export GPG_TTY=.*' ~/.zshrc && sed -i -e 's/^export GPG_TTY=.*/export GPG_TTY=$(tty)/g' ~/.zshrc || printf 'export GPG_TTY=$(tty)\n' >> ~/.zshrc
 
-log "Downloading install.sh"
-curl -fsSLo- https://raw.githubusercontent.com/sixcare/dotfiles/main/install.sh | zsh
+log "Starting install.sh"
+zsh ./install.sh

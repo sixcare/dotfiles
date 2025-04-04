@@ -64,22 +64,22 @@ log "Sway"
 doas apt-get install -y sway swaybg swayidle swaylock waybar bemenu
 mkdir -p ~/.config/sway
 mkdir -p /usr/share/backgrounds
-doas curl -fsSLo /usr/share/backgrounds/background-1920x1080.png https://wallpaper.sixca.re/wallpaper_1920x1080.png
-curl -fsSLo ~/.config/sway/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swayconfig
+cp ./images/wallpaper_1920x1080.png /usr/share/backgrounds/background-1920x1080.png
+cp ./config/swayconfig ~/.config/sway/config
 
 ## waybar
 mkdir -p ~/.config/waybar/scripts
-curl -fsSLo ~/.config/waybar/style.css https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/style.css
-curl -fsSLo ~/.config/waybar/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/config
+cp ./config/waybar/style.css ~/.config/waybar/style.css
+cp ./config/waybar/config ~/.config/waybar/config
 
 # WireGuard Script
-curl -fsSLo ~/.config/waybar/scripts/wireguard.sh https://raw.githubusercontent.com/sixcare/dotfiles/main/config/waybar/scripts/wireguard.sh
+cp ./config/waybar/scripts/wireguard.sh ~/.config/waybar/scripts/wireguard.sh
 chmod +x ~/.config/waybar/scripts/wireguard.sh
 
 ## swaylock
 mkdir -p ~/.config/swaylock/
-doas curl -fsSLo /usr/share/backgrounds/lockscreen-1920x1080.png https://wallpaper.sixca.re/lockscreen_1920x1080.png
-curl -fsSLo ~/.config/swaylock/config https://raw.githubusercontent.com/sixcare/dotfiles/main/config/swaylock/config
+cp ./images/lockscreen_1920x1080.png /usr/share/backgrounds/lockscreen-1920x1080.png
+cp config/swaylock/config ~/.config/swaylock/config
 
 # shellcheck disable=SC2016
 grep -q '^alias gotosleep=.*' ~/.zshrc && \
@@ -134,12 +134,12 @@ doas apt-get install -y signal-desktop
 log "VIM"
 doas apt-get install -y vim
 doas update-alternatives --set editor /usr/bin/vim.basic
-curl -fsSLo ~/.vimrc https://raw.githubusercontent.com/sixcare/dotfiles/main/config/vimrc
+cp ./config/vimrc ~/.vimrc
 
 # TMUX
 log "TMUX"
 doas apt-get install -y tmux
-curl -fsSLo ~/.tmux.conf https://raw.githubusercontent.com/sixcare/dotfiles/main/config/tmux.conf
+cp ./config/tmux.conf ~/.tmux.conf
 
 # Rust
 log "Rust"
