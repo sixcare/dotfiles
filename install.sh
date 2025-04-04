@@ -103,18 +103,15 @@ doas /usr/sbin/usermod -aG docker "$USER"
 log "Keepassxc"
 doas apt-get install -y keepassxc
 
-# vscodium
-log "vscodium"
-curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | doas gpg --yes --dearmor -o /usr/share/keyrings/vscodium-archive-keyring.gpg
-doas chmod a+r /usr/share/keyrings/vscodium-archive-keyring.gpg
-
-echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
-    | doas tee /etc/apt/sources.list.d/vscodium.list
-
+# VS Code
+log "VS Code"
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | doas gpg --yes --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | doas tee /etc/apt/sources.list.d/vscode.list
 doas apt-get update
-doas apt-get install -y codium
-mkdir -p ~/.config/VSCodium/User
-curl -fsSLo ~/.config/VSCodium/User/settings.json https://raw.githubusercontent.com/sixcare/dotfiles/main/config/vscode.json
+doas apt-get install -y code
+
+mkdir -p ~/.config/Code/User
+cp ./config/vscode.json ~/.config/Code/User/settings.json
 
 # Signal
 log "Signal"
