@@ -49,6 +49,7 @@ log "Git config"
 git config --global init.defaultBranch main
 git config --global user.name "Are Schjetne"
 git config --global user.email sixcare.as@gmail.com
+git config --global --replace-all core.pager "less -F -X"
 
 # Nerdfonts
 log "Nerdfonts"
