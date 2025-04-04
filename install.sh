@@ -152,14 +152,14 @@ doas chmod +x /usr/local/bin/nvim
 
 # Spotify
 log "Spotify"
-curl -fsSL https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | doas gpg --yes --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-echo "deb http://repository.spotify.com stable non-free" | doas tee /etc/apt/sources.list.d/spotify.list
+curl -fsSL https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | doas gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 doas apt-get update
 doas apt-get install -y spotify-client
 
 # NVM
 log "NVM"
-curl -fsSLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+curl -fsSLo- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 export NVM_DIR
 # shellcheck source=/dev/null
