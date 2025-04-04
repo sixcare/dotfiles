@@ -150,13 +150,6 @@ log "Neovim"
 doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 doas chmod +x /usr/local/bin/nvim
 
-# AstroNvim
-log "AstroNvim"
-[[ -d ~/.config/nvim ]] || git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-curl -fsSLo "$HOME"/.config/nvim/init.lua https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/init.lua
-curl -fsSLo "$HOME"/.config/nvim/lua/plugins/surround.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/surround.lua
-curl -fsSLo "$HOME"/.config/nvim/lua/plugins/neo-tree.lua  https://raw.githubusercontent.com/sixcare/dotfiles/main/config/nvim/neo-tree.lua
-
 # Spotify
 log "Spotify"
 curl -fsSL https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | doas gpg --yes --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
