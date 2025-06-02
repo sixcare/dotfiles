@@ -1,8 +1,9 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
 set -euo pipefail
 
 log() {
-    printf "\(°^°)/ $(date -Ins) » %s\n" "$1"
+    printf "$(date -Ins) » %s\n" "$1"
 }
 
 # Zsh
