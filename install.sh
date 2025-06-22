@@ -25,6 +25,7 @@ Options:
   --firefox          Install 🦊 Firefox
   --fonts            Install 🇫 Nerdfonts
   --git              Configure 🌲 Git
+  --gpg-agent        Install 🔐 gnugpg
   --kitty            Install 🐈‍⬛ Kitty
   --neovim           Install 📓 Neovim
   --network          Install 🌐 Network(Manager)
@@ -73,6 +74,12 @@ git() {
   git config --global user.name "Are Schjetne"
   git config --global user.email sixcare.as@gmail.com
   git config --global --replace-all core.pager "less -F -X"
+}
+
+gpg-agent() {
+  log "🔐 gnugpg agent"
+  doas apt-get install -y pinentry-qt
+  cp ./config/gpg-agent.conf "${HOME}"/.gnupg/gpg-agent.conf
 }
 
 kitty() {
@@ -240,6 +247,7 @@ all() {
   firefox
   fonts
   git
+  gpg-agent
   kitty
   neovim
   network
@@ -275,6 +283,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     --git)
       git
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --gpg-agent)
+      gpg-agent
       INSTALL_SELECTED=true
       shift
       ;;
