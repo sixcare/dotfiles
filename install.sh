@@ -25,17 +25,17 @@ Options:
   --firefox          Install 🦊 Firefox
   --fonts            Install 🇫 Nerdfonts
   --git              Configure 🌲 Git
-  --gpg-agent        Install 🔐 gnugpg
+  --gpg-agent        Install 🔐 gnupg
   --kitty            Install 🐈‍⬛ Kitty
   --neovim           Install 📓 Neovim
   --network          Install 🌐 Network(Manager)
   --nvm              Install 🤓 NVM
-  --packages         Install 📦 common packages
+  --packages         Install 📦 Common packages
   --podman           Install 🦭 Podman
   --rust             Install 🦀 Rust
   --signal           Install 💬 Signal
   --spotify          Install 🎧 Spotify
-  --sway             Install 😎 Sway"
+  --sway             Install 😎 Sway
   --tmux             Install 🖥️ TMUX
   --vim              Install 📒 VIM
   --vscode           Install 📔 VS Code
@@ -77,8 +77,8 @@ git() {
 }
 
 gpg-agent() {
-  log "🔐 gnugpg agent"
-  doas apt-get install -y pinentry-qt
+  log "🔐 gnupg agent"
+  doas apt-get install -y gnupg pinentry-qt
   cp ./config/gpg-agent.conf "${HOME}"/.gnupg/gpg-agent.conf
 }
 
