@@ -99,7 +99,7 @@ kitty() {
   doas update-alternatives --set x-terminal-emulator /usr/local/bin/kitty
 
   mkdir -p "${HOME}"/.config/kitty
-  cp -r .config/kitty/* "${HOME}/.config/kitty/"
+  cp -r ./config/kitty/* "${HOME}/.config/kitty/"
 }
 
 neovim() {
@@ -108,7 +108,7 @@ neovim() {
   doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
   doas chmod +x /usr/local/bin/nvim
   mkdir -p "${HOME}/.config/nvim"
-  cp ./config/neovim-from-vim "${HOME}/.config/nvim/init.vim"
+  cp -r ./config/nvim/* "${HOME}/.config/nvim/"
 }
 
 network() {
