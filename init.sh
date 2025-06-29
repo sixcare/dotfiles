@@ -16,10 +16,7 @@ log "Oh My zsh"
 [[ -d ~/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 doas /usr/sbin/usermod -s /usr/bin/zsh "$USER"
 
-sed -i 's/^plugins=(.*/plugins=(git ssh-agent)/g' ~/.zshrc
-sed -i 's/^ZSH_THEME=.*/ZSH_THEME="robbyrussell"/g' ~/.zshrc
-# shellcheck disable=SC2016
-grep -q 'export GPG_TTY=.*' ~/.zshrc && sed -i -e 's/^export GPG_TTY=.*/export GPG_TTY=$(tty)/g' ~/.zshrc || printf 'export GPG_TTY=$(tty)\n' >> ~/.zshrc
+cp ./config/zshrc "${HOME}/.zshrc"
 
 log "Starting install.sh"
 zsh ./install.sh
