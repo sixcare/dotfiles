@@ -104,8 +104,11 @@ kitty() {
 
 neovim() {
   log "📓 Neovim"
+  doas apt-get install -y ripgrep
   doas curl -fsSLo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
   doas chmod +x /usr/local/bin/nvim
+  mkdir -p "${HOME}/.config/nvim"
+  cp ./config/neovim-from-vim "${HOME}/.config/nvim/init.vim"
 }
 
 network() {
