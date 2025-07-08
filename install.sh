@@ -22,6 +22,7 @@ Usage: $0 [OPTIONS]
 
 Options:
   --all              Run all 🪆 sub-modules (same as running without any arguments)
+  --c                Install 🖳 C development suite
   --firefox          Install 🦊 Firefox
   --fonts            Install 🇫 Nerdfonts
   --git              Configure 🌲 Git
@@ -45,6 +46,10 @@ EOF
   exit 0
 }
 
+c() {
+    log "🖳 C development suite"
+    doas apt-get install -y gdb valgrind make cmake
+}
 
 firefox() {
   log "🦊 Firefox"
@@ -245,6 +250,7 @@ wireguard() {
 all() {
   log "🌌 Running all"
 
+  c
   firefox
   fonts
   git
@@ -269,6 +275,11 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --all)
       all
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --c)
+      c
       INSTALL_SELECTED=true
       shift
       ;;
