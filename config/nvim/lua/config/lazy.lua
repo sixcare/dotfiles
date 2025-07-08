@@ -65,9 +65,6 @@ spec = {
             },
           },
         })
-
-        -- Keymap to toggle neo-tree
-        vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Neo-tree" })
       end,
     },
     {
@@ -115,6 +112,11 @@ spec = {
           mode = { "i", "s" },
         },
       },
+    },
+    {
+        "echasnovski/mini.nvim",
+        version = "false",
+        lazy = false
     }
 },
     -- Configure any other settings here. See the documentation for more details.

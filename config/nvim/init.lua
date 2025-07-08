@@ -9,7 +9,9 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 
 vim.g.mapleader = ","
-vim.keymap.set('n', '<leader>w', ':w<CR>')
-vim.keymap.set('n', '<leader>t', '<C-w>h', { desc = 'Focus Neo-tree' })
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Neo-tree" })
+vim.keymap.set("n", "<leader>t", "<C-w>h", { desc = "Focus Neo-tree" })
 
 require("config.lazy")
+require("mini.surround").setup()
