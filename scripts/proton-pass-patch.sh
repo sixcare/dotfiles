@@ -6,9 +6,9 @@ VERSION_URL="https://proton.me/download/PassDesktop/linux/x64/version.json"
 VERSION_JSON=$(curl -fsL "${VERSION_URL}")
 
 
-VERSION=$(echo $VERSION_JSON | jq -r '.Releases[0].Version')
-SHA=$(echo $VERSION_JSON | jq -r '.Releases[0].File[] | select(.Identifier==".deb (Ubuntu/Debian)") | .Sha512CheckSum')
-DOWNLOAD_URL=$(echo $VERSION_JSON | jq -r '.Releases[0].File[] | select(.Identifier==".deb (Ubuntu/Debian)") | .Url')
+VERSION=$(echo "${VERSION_JSON}" | jq -r '.Releases[0].Version')
+SHA=$(echo "${VERSION_JSON}" | jq -r '.Releases[0].File[] | select(.Identifier==".deb (Ubuntu/Debian)") | .Sha512CheckSum')
+DOWNLOAD_URL=$(echo "${VERSION_JSON}" | jq -r '.Releases[0].File[] | select(.Identifier==".deb (Ubuntu/Debian)") | .Url')
 
 if [ ! "$VERSION" ]; then
     printf "%s\n" "❌ Failed to get version" 1>&2 
