@@ -28,6 +28,9 @@ bindsym $mod+Shift+n exec makoctl dismiss --all
 set $menu bemenu-run -i -l 25 -p '' -W 0.45 -H 30 --fn $font --nb '#00000099' --ab '#00000099' --hb '#000000cc'| xargs swaymsg exec --
 set $lock swaylock -C $HOME/.config/swaylock/config
 
+for_window [class="Firefox"] inhibit_idle fullscreen
+for_window [app_id="firefox"] inhibit_idle fullscreen
+
 # font pango:SauceCodePro Nerd Font Mono 12
 font $font 12
 
