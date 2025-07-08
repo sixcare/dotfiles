@@ -55,9 +55,13 @@ exec swayidle -w \
 exec swayidle lock 'swaymsg "output * dpms on" && swaylock' unlock 'kill -s 1 $(pgrep swaylock)'
 
 ### Input configuration
-   input * {
-       xkb_layout 'no'
-   }
+input * {
+    xkb_layout 'no'
+}
+input 1133:49257:Logitech_USB_Laser_Mouse {
+    accel_profile "flat"
+    pointer_accel 0.5
+}
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
