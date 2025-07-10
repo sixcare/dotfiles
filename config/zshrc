@@ -104,28 +104,40 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gotosleep="swaylock -C $HOME/.config/swaylock/config; systemctl suspend" 
-alias rust_init="source <(rustup completions zsh)"
+alias rust-init="source <(rustup completions zsh)"
 
 export NVM_DIR="$HOME/.nvm"
-load-nvm () {
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
-alias nvm_init="load-nvm"
+alias nvm-init="[ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\" && [ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\""
 
 alias code="code --ozone-platform=wayland --enable-features=WaylandWindowDecorations" 
 alias proton-pass="proton-pass --ozone-platform=wayland --enable-features=WaylandWindowDecorations" 
+#alias proton-mail="proton-mail --ozone-platform=wayland --enable-features=WaylandWindowDecorations" 
+alias lc="/usr/bin/ls -alh --color=always --group-directories-first"
+alias cpv="rsync -ah --info=progress2"
+
+cd-list () {
+    cd "${1}" && \
+    /usr/bin/pwd && \
+    lc
+}
+alias cdd="cd-list"
+
+mkdir-cd () {
+    printf "%s\n" "Creating directory '$(pwd)/${1}'"
+    mkdir -p "${1}" && \
+    cd-list "${1}"
+}
+alias mdd="mkdir-cd"
 
 launch-nvim () {
     printf "Launching nvim\n"
-    if [ -d "$1" ]; then
-        cd $1
+    if [ -d "${1}" ]; then
+        cdd "${1}"
     fi
     tmux splitw
     tmux resize-pane -y 12
     tmux select-pane -U
     nvim $1
 }
-
 alias nvims="launch-nvim"
 
