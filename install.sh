@@ -141,6 +141,7 @@ packages() {
       brightnessctl
       build-essential
       ca-certificates
+      fdisk
       fwupd
       gnupg
       htop
