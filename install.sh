@@ -118,7 +118,7 @@ neovim() {
 
 network() {
   log "🌐 Network"
-  doas apt-get install -y network-manager
+  doas apt-get install -y network-manager rfkill
   doas systemctl start NetworkManager.service
   doas systemctl enable NetworkManager.service
 }
