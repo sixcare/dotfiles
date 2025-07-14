@@ -28,6 +28,7 @@ window#waybar {
 #memory,
 #cpu,
 #battery,
+#bluetooth,
 #network,
 #tray {
 	background: #1a1a1a;
@@ -76,6 +77,9 @@ window#waybar {
 #battery {
 	color: #7A5DC7;
 }
+#bluetooth{
+	color: #2950F6;
+}
 #network{
 	color: #29B6F6;
 }
@@ -87,6 +91,7 @@ window#waybar {
 #memory,
 #cpu,
 #battery,
+#bluetooth,
 #network {
 	padding: 0 10px;
 }
