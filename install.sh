@@ -48,7 +48,7 @@ EOF
 
 c() {
     log "🖳 C development suite"
-    doas apt-get install -y gdb valgrind make cmake
+    doas apt-get install -y gdb valgrind make cmake clangd
 }
 
 firefox() {
