@@ -350,6 +350,11 @@ while [[ $# -gt 0 ]]; do
       INSTALL_SELECTED=true
       shift
       ;;
+    --rust)
+      rust
+      INSTALL_SELECTED=true
+      shift
+      ;;
     --spotify)
       spotify
       INSTALL_SELECTED=true
