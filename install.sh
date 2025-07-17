@@ -61,7 +61,7 @@ firefox() {
     Package: *
     Pin: origin packages.mozilla.org
     Pin-Priority: 1000
-    ' | doas tee /etc/apt/preferences.d/mozilla 
+    ' | doas tee /etc/apt/preferences.d/mozilla
     doas apt-get update && doas apt-get install -y firefox
 }
 
