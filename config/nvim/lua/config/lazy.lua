@@ -115,7 +115,7 @@ spec = {
     },
     {
         "echasnovski/mini.nvim",
-        version = "false",
+        version = "*",
         lazy = false
     }
 },
