@@ -74,7 +74,7 @@ fonts() {
   rm -rf ~/Downloads/fonts ~/Downloads/SourceCodePro.zip
 }
 
-git() {
+git-config() {
   log "🌲 Git config"
   git config --global init.defaultBranch main
   git config --global user.name "Are Schjetne"
@@ -301,7 +301,7 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     --git)
-      git
+      git-config
       INSTALL_SELECTED=true
       shift
       ;;
