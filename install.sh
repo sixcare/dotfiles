@@ -194,7 +194,7 @@ signal() {
 spotify() {
   log "🎧 Spotify"
   curl -fsSL https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | doas gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-  echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  echo "deb https://repository.spotify.com stable non-free" | doas tee /etc/apt/sources.list.d/spotify.list
   doas apt-get update
   doas apt-get install -y spotify-client
 }
