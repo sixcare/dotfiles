@@ -40,7 +40,7 @@ Options:
   --sway             Install 😎 Sway
   --tmux             Install 🖥️ TMUX
   --vim              Install 📒 VIM
-  --vscode           Install 📔 VS Code
+  --vscodium         Install 📔 VS Code
   --wireguard        Install 🔗 WireGuard
   -h, --help         Show this help message 🆘
 EOF
@@ -236,15 +236,15 @@ vim() {
   cp ./config/vimrc "${HOME}"/.vimrc
 }
 
-vscode() {
-  log "📔 VS Code"
-  curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | doas gpg --yes --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg
-  echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | doas tee /etc/apt/sources.list.d/vscode.list
+vscodium() {
+  log "📔 VS Codeium"
+  curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | doas gpg --yes --dearmor -o /etc/apt/keyrings/vscodium-archive-keyring.gpg
+  echo 'deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' | doas tee /etc/apt/sources.list.d/vscodium.list
   doas apt-get update
-  doas apt-get install -y code
+  doas apt-get install -y codium
 
   mkdir -p ~/.config/Code/User
-  cp ./config/vscode.json ~/.config/Code/User/settings.json
+  cp ./config/vscodium.json ~/.config/Code/User/settings.json
 }
 
 wireguard() {
@@ -274,7 +274,7 @@ all() {
   sway
   tmux
   vim
-  vscode
+  vscodium
   wireguard
 }
 
@@ -366,12 +366,12 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     --vim)
-      vscode
+      vim
       INSTALL_SELECTED=true
       shift
       ;;
-    --vscode)
-      vscode
+    --vscodium)
+      vscodium
       INSTALL_SELECTED=true
       shift
       ;;
