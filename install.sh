@@ -33,6 +33,7 @@ Options:
   --nvm              Install 🤓 NVM
   --packages         Install 📦 Common packages
   --podman           Install 🦭 Podman
+  --proton-pass      Install 🔐 Proton Pass
   --rust             Install 🦀 Rust
   --signal           Install 💬 Signal
   --spotify          Install 🎧 Spotify
@@ -171,6 +172,11 @@ rust() {
   grep -q '^alias rust_init=.*' ~/.zshrc && \
       sed -i -e 's/^alias rust_init=.*/alias rust_init="source <(rustup completions zsh)"\n/g' "$HOME/.zshrc" || \
       printf 'alias rust_init="source <(rustup completions zsh)"\n' >> "$HOME/.zshrc"
+}
+
+proton-pass() {
+  log "🔐 Proton Pass"
+  ./scripts/proton-pass-patch.sh
 }
 
 signal() {
@@ -331,6 +337,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     --podman)
       podman
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --proton-pass)
+      proton-pass
       INSTALL_SELECTED=true
       shift
       ;;
