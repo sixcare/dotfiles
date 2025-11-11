@@ -15,7 +15,7 @@ tmux_start () {
 
 	tmux new-window -t $session -n "[journalctl]"
 	tmux selectp -t 1
-	tmux send-keys "doas journalctl" C-m
+	tmux send-keys "doas journalctl -f" C-m
 
     tmux attach-session -t $session
 }
