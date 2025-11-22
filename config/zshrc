@@ -141,3 +141,13 @@ launch-nvim () {
 }
 alias nvims="launch-nvim"
 
+pretty-gitlog-oneliner () {
+    NUM="${${1}:-10}"
+    git log\
+      --graph\
+      --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an - %ae>%Creset %Cred(%GK)%Creset'\
+      --abbrev-commit\
+      -n ${NUM}
+}
+
+alias gl="pretty-gitlog-oneliner"
