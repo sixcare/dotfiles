@@ -22,6 +22,7 @@ Usage: $0 [OPTIONS]
 
 Options:
   --all              Run all 🪆 sub-modules (same as running without any arguments)
+  --adb              Install 📱 Android Debug Bridge
   --c                Install 🖳 C development suite
   --firefox          Install 🦊 Firefox
   --fonts            Install 🇫 Nerdfonts
@@ -47,6 +48,16 @@ Options:
   -h, --help         Show this help message 🆘
 EOF
   exit 0
+}
+
+adb() {
+  log "📱 Android Debug Bridge"
+  doas mkdir -p /usr/local/lib/adb
+  log "Downloading platform-tools-latest-linux.zip"
+  curl -f#SLo /tmp/adb.zip https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+  doas /usr/bin/7z e -o/usr/local/lib/adb /tmp/adb.zip
+  doas /usr/bin/chown -R root:root /usr/local/lib/adb
+  doas /usr/bin/ln -fs /usr/local/lib/adb/adb /usr/local/bin/adb
 }
 
 c() {
@@ -277,6 +288,7 @@ yubikey_authenticator() {
 all() {
   log "🌌 Running all"
 
+  adb
   c
   firefox
   fonts
@@ -304,6 +316,11 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --all)
       all
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --adb)
+      adb
       INSTALL_SELECTED=true
       shift
       ;;
