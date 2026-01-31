@@ -43,6 +43,7 @@ Options:
   --vim              Install 📒 VIM
   --vscodium         Install 📔 VS Code
   --wireguard        Install 🔗 WireGuard
+  --yubikey-auth     Install 🔒 Yubikey Authenticator App
   -h, --help         Show this help message 🆘
 EOF
   exit 0
@@ -260,6 +261,19 @@ wireguard() {
   chmod +x ~/.config/waybar/scripts/wireguard.sh
 }
 
+yubikey_authenticator() {
+  log "🔒 Yubikey Authenticator app"
+  doas mkdir -p /usr/local/lib/yubikey-authenticator
+  log "Downloading yubikey-authenticator-latest-linux.tar.gz"
+  curl -f#SLo /tmp/yubikey-authenticator.tar.gz https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-latest-linux.tar.gz
+  doas /usr/bin/tar -xzf /tmp/yubikey-authenticator.tar.gz -C /usr/local/lib/yubikey-authenticator --strip-components=1
+  doas /usr/bin/chown -R root:root /usr/local/lib/yubikey-authenticator
+  doas /usr/bin/chmod 755 /usr/local/lib/yubikey-authenticator/desktop_integration.sh
+  doas /usr/bin/ln -fs /usr/local/lib/yubikey-authenticator/authenticator /usr/local/bin/yubikey-authenticator
+  /usr/local/lib/yubikey-authenticator/desktop_integration.sh --install
+}
+
+
 all() {
   log "🌌 Running all"
 
@@ -283,6 +297,7 @@ all() {
   vim
   vscodium
   wireguard
+  yubikey_authenticator
 }
 
 while [[ $# -gt 0 ]]; do
@@ -394,6 +409,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     --wireguard)
       wireguard
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --yubikey-auth)
+      yubikey_authenticator
       INSTALL_SELECTED=true
       shift
       ;;
