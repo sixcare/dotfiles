@@ -39,6 +39,7 @@ Options:
   --spotify          Install 🎧 Spotify
   --sway             Install 😎 Sway
   --tmux             Install 🖥️ TMUX
+  --uv               Install 🐍 UV
   --vim              Install 📒 VIM
   --vscodium         Install 📔 VS Code
   --wireguard        Install 🔗 WireGuard
@@ -229,6 +230,11 @@ tmux() {
   cp ./config/tmux.conf "${HOME}"/.tmux.conf
 }
 
+uv() {
+  log "🐍 UV"
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+}
+
 vim() {
   log "📒 VIM"
   doas apt-get install -y vim
@@ -273,6 +279,7 @@ all() {
   spotify
   sway
   tmux
+  uv
   vim
   vscodium
   wireguard
@@ -367,6 +374,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     --tmux)
       tmux
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --uv)
+      uv
       INSTALL_SELECTED=true
       shift
       ;;
