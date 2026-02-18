@@ -42,6 +42,7 @@ Options:
   --tmux             Install 🖥️ TMUX
   --uv               Install 🐍 UV
   --vim              Install 📒 VIM
+  --virt             Install 🤖 Virtualization
   --vscodium         Install 📔 VS Code
   --wireguard        Install 🔗 WireGuard
   --yubikey-auth     Install 🔒 Yubikey Authenticator App
@@ -254,6 +255,12 @@ vim() {
   cp ./config/vimrc "${HOME}"/.vimrc
 }
 
+virt() {
+  log "🤖 Virtualization"
+  doas apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients virtinst bridge-utils
+  doas usermod -aG libvirt "${USER}"
+}
+
 vscodium() {
   log "📔 VS Codeium"
   curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | doas gpg --yes --dearmor -o /etc/apt/keyrings/vscodium-archive-keyring.gpg
@@ -307,6 +314,7 @@ all() {
   tmux
   uv
   vim
+  virt
   vscodium
   wireguard
   yubikey_authenticator
@@ -416,6 +424,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     --vim)
       vim
+      INSTALL_SELECTED=true
+      shift
+      ;;
+    --virt)
+      virt
       INSTALL_SELECTED=true
       shift
       ;;
