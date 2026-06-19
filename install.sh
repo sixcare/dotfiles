@@ -154,6 +154,7 @@ packages() {
   PACKAGES=(
       p7zip-full
       bmon
+      btrfs-progs
       brightnessctl
       build-essential
       ca-certificates
@@ -259,7 +260,7 @@ vim() {
 
 virt() {
   log "🤖 Virtualization"
-  doas apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients virtinst bridge-utils
+  doas apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients virtinst bridge-utils virt-viewer
   doas usermod -aG libvirt "${USER}"
 }
 
