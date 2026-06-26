@@ -311,7 +311,7 @@ all() {
   nvm
   packages
   podman
-  ruts
+  rust
   signal
   spotify
   sway
