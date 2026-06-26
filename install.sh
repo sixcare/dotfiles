@@ -166,6 +166,7 @@ packages() {
       keepassxc
       net-tools
       shellcheck
+      sshfs
       unzip
       pavucontrol
       pulseaudio
