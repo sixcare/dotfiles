@@ -152,6 +152,7 @@ nvm() {
 packages() {
   log "📦 Packages"
   PACKAGES=(
+      p7zip-full
       bmon
       brightnessctl
       build-essential
@@ -168,6 +169,7 @@ packages() {
       pavucontrol
       pulseaudio
       python3-venv
+      trash-cli
   )
   doas apt-get update
   doas apt-get install -y "${PACKAGES[@]}"
