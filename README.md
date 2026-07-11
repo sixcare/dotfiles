@@ -11,8 +11,8 @@ apt-get install doas
 ```
 ### Configure doas
 ```console-session
-echo 'permit persist sixcare as root' >> /etc/doas.conf
-echo "permit persist :wheel as root" >> /etc/doas.conf
+echo 'permit nopass keepenv sixcare as root' >> /etc/doas.conf
+echo 'permit persist :wheel as root' >> /etc/doas.conf
 ```
 
 ## Run it
